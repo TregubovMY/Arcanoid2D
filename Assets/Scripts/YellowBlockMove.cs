@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+// YellowBlockMove.cs
 using UnityEngine;
 
 public class YellowBlockMove : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 1f;
     private Vector2 direction = Vector2.left;
     public string reflectingTag1 = "Wall";
     public string reflectingTag2 = "Block";
@@ -13,28 +12,24 @@ public class YellowBlockMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
     void Update()
     {
-        Vector2 initialPosition = transform.position;
-        
-        RaycastHit2D hit = Physics2D.Raycast(initialPosition, direction, 2f);
+        rb.velocity = direction * speed;
+    }
 
-        // Проверяем, произошло ли столкновение
-        if (hit.collider != null && (hit.collider.CompareTag(reflectingTag2) || hit.collider.CompareTag(reflectingTag1)))
-        {
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ball")) {
+            Rigidbody2D ballRb = collision.attachedRigidbody;
+
+            Vector2 reflectedVelocity = Vector2.Reflect(ballRb.velocity, Vector2.down);
+            ballRb.velocity = reflectedVelocity;
+            GetComponent<BlockScript>().collisionBall();
+        } else if (collision.gameObject.CompareTag(reflectingTag2) || collision.gameObject.CompareTag(reflectingTag1)){
             direction = -direction;
         }
-        else
-        {
-        }
-        
-        transform.position += new Vector3(direction.x * speed * Time.deltaTime, 0, 0);
-
-        // if (hit.collider != null && )
-        // {
-        //     direction = -direction;
-        // }
     }
 }

@@ -39,4 +39,16 @@ public class BlockScript : MonoBehaviour
                 textComponent.text = hitsToDestroy.ToString();
         }
     }
+
+    public void collisionBall() {
+        hitsToDestroy--;
+        if (hitsToDestroy == 0)
+        {
+            OnDestroyedPosition?.Invoke(transform.position);
+            Destroy(gameObject);
+            playerScript.BlockDestroyed(points, transform.position);
+        }
+        else if (textComponent != null)
+            textComponent.text = hitsToDestroy.ToString();
+    }
 }
