@@ -16,7 +16,7 @@ public class BallScript : MonoBehaviour
 
     private bool isStuck = false;
     public Vector2 lastVelocity;
-    private Vector2 ballOffset; // Смещение от ракетки
+    private Vector2 ballOffset; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private Sticky stickyBonus;
 
     void Start()
@@ -31,10 +31,10 @@ public class BallScript : MonoBehaviour
 
     void Update()
     {
-// Нужно пофиксить:
-// 1) Чтобы если sliky и подобрал simple мячь отлетал. 
-// 2) сделать двигающийся блок
-// 3) Пофиксить баг, что дважды нельзя сделать склизким
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:
+// 1) пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ sliky пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ simple пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. 
+// 2) пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+// 3) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 // 4) ...
         if (isStuck)
         {
@@ -82,6 +82,7 @@ public class BallScript : MonoBehaviour
 
     public void UnstickFromPlayer()
     {
+        Debug.Log("Р¦РёРєР» РІ UnstickFromPlayer");
         isStuck = false;
         rb.isKinematic = false;
         rb.velocity = lastVelocity;

@@ -34,7 +34,7 @@ public class BonusAttach : MonoBehaviour
                 Attach(playerMove.transform);
             }
         }
-        else if (collision.tag == "BottomWall")
+        else if (collision.tag == "BottomWal")
         {
             Destroy(gameObject);
         }

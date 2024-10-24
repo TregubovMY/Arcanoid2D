@@ -16,9 +16,9 @@ public class PlayerScript : MonoBehaviour
     public GameObject yellowPrefab;
     public GameObject ballPrefab;
 
-    // Префабы бонусов
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public GameObject[] bonusPrefabs;
-    // Шанс появления бонуса (от 0 до 1)
+    // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅ 0 пїЅпїЅ 1)
     [Range(0f, 1f)]
     public float bonusSpawnChance = 0.1f;
 
@@ -33,25 +33,26 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     public bool IsSticky { get; private set; }
-    private BallScript stuckBallScript; // Ссылка на скрипт приклеенного мяча
+    private BallScript stuckBallScript; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
     public void MakeSticky(Color color)
     {
         spriteRenderer.color = color;
-        IsSticky = true; // Устанавливаем флаг клейкости
+        IsSticky = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
 
     public void MakeSimple()
     {
         spriteRenderer.color = originalColor;
-        IsSticky = false; // Сбрасываем флаг клейкости
+        IsSticky = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        stuckBallScript = null;
     }
 
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         Sticky stickyBonus = GetComponentInChildren<Sticky>();
-        if (stickyBonus && IsSticky && stuckBallScript == null) // Проверяем stuckBallScript
+        if (stickyBonus && IsSticky && stuckBallScript == null) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ stuckBallScript
         {
 
             BallScript ballScript = collision.gameObject.GetComponent<BallScript>();
@@ -116,6 +117,11 @@ public class PlayerScript : MonoBehaviour
             var pos = transform.position;
             pos.x = mousePos.x;
             transform.position = pos;
+        }
+
+        if (stuckBallScript != null && IsSticky == false) {
+            stuckBallScript.UnstickFromPlayer();
+            stuckBallScript = null;
         }
 
         if (Input.GetKeyDown(KeyCode.M))
@@ -207,11 +213,11 @@ public class PlayerScript : MonoBehaviour
             if (level < maxLevel)
             {
                 gameData.level++;
-                SceneManager.LoadScene("MainScene"); // Загрузка следующего уровня
+                SceneManager.LoadScene("MainScene"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             }
             else
             {
-                SceneManager.LoadScene("MainScene"); // Или сцена завершения игры
+                SceneManager.LoadScene("MainScene"); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             }
         }
     }

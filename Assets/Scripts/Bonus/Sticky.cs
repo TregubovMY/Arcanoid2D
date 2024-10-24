@@ -26,9 +26,9 @@ public class Sticky : Bonus
         PlayerScript player = GetComponentInParent<PlayerScript>();
         if (player != null)
         {
-            if (_negative)
-                player.MakeSticky(stickyColor);
-            else
+            // if (_negative)
+                // player.MakeSticky(stickyColor);
+            // else
                 player.MakeSimple();
         }
     }

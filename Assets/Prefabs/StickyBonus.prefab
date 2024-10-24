@@ -257,9 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb8ca77fbc05b44c9304ba6c81adbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _score: 50
-  _time: 0
-  isInfinite: 1
+  _score: 10
+  _time: 5
+  isInfinite: 0
   gameData: {fileID: 11400000, guid: 199836a5cd897d1478337fb534da0388, type: 2}
   stickyColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   _negative: 0

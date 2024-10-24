@@ -19,6 +19,8 @@ UserSettings/
 # Логи аварийных завершений программы
 CrashReports/
 
+Assets/FastScriptReload
+
 # === Mono ===
 # Папка для временных файлов Mono
 *.pidb
