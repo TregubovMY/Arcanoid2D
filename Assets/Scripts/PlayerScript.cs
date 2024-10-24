@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Linq;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -16,9 +18,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject yellowPrefab;
     public GameObject ballPrefab;
 
-    // ������� �������
     public GameObject[] bonusPrefabs;
-    // ���� ��������� ������ (�� 0 �� 1)
     [Range(0f, 1f)]
     public float bonusSpawnChance = 0.1f;
 
@@ -207,8 +207,11 @@ public class PlayerScript : MonoBehaviour
     IEnumerator BlockDestroyedCoroutine()
     {
         yield return new WaitForSeconds(0.1f);
-
-        if (GameObject.FindGameObjectsWithTag("Block").Length == 1)
+        GameObject[] allBlocks = GameObject.FindGameObjectsWithTag("Block");
+        
+        List<GameObject> filteredBlocks = allBlocks.Where(block => block.gameObject.name != "Blue Block(Clone)").ToList();
+        Debug.Log("All: " + allBlocks.Length + "filter: " + filteredBlocks.Count + "name:" + allBlocks[1].gameObject.name);
+        if (filteredBlocks.Count == 1)
         {
             if (level < maxLevel)
             {

@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf6f195df18ac14f806febeef8fb7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitsToDestroy: 1
+  hitsToDestroy: 20
   points: 100
   textObject: {fileID: 0}
 --- !u!1 &8658129656788247946

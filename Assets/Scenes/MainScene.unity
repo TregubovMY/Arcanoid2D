@@ -779,6 +779,9 @@ MonoBehaviour:
   bonusPrefabs:
   - {fileID: 6172782432503381249, guid: 3fb3e1f5665bcac4eb6f65a8c46625d3, type: 3}
   - {fileID: 2936411013959510352, guid: a9b5702d706afa54b9ded36cfa6bd575, type: 3}
+  - {fileID: 5964252350596802595, guid: a72b98baa8cfd4f4d9dc12365d64f487, type: 3}
+  - {fileID: 8306467496369697158, guid: c670bcfe58f7cda4b95551d24b229bdf, type: 3}
+  - {fileID: 5904604409718057478, guid: b2fef75f703918d44a6768748ae36714, type: 3}
   bonusSpawnChance: 1
   gameData: {fileID: 11400000, guid: 199836a5cd897d1478337fb534da0388, type: 2}
   pointSound: {fileID: 8300000, guid: 9a2346e33db49454bb441993c84f8127, type: 3}

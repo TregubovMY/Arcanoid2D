@@ -36,9 +36,11 @@ public class BallScript : MonoBehaviour
 // 2) ������� ����������� ����
 // 3) ��������� ���, ��� ������ ������ ������� ��������
 // 4) ...
-        if (isStuck)
-        {
+        if (isStuck) {
             transform.position = playerObj.transform.position + (Vector3)ballOffset;
+            if (player.GetComponentInChildren<PlayerSize>() != null) {
+                transform.position += new Vector3(0.2f, 0.2f, 0);
+            }
             
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl) || !player.IsSticky)
             {
